@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="BDM" default="help" basedir="../">
+    <property file="${basedir}/build-deploy/build.properties" />
+
+    <target name="help" description="Display detailed usage information">
+        <echo>Type "ant -p" to see a list of targets</echo>
+    </target>
+
+    <target name="build" depends="clean, prepare" />
+
+    <target name="clean" description="Cleanup build artifacts">
+        <delete dir="${basedir}/build/coverage" />
+        <delete dir="${basedir}/build/logs" />
+        <delete dir="${basedir}/build/docs" />
+    </target>
+
+    <target name="clean:vendor" description="Cleanup vendor artifacts">
+        <delete file="build-deploy/composer.lock" verbose="true" />
+        <delete dir="vendor" />
+        <delete dir="bin" />
+    </target>
+
+    <target name="prepare" depends="clean" description="Prepare for build">
+        <mkdir dir="${basedir}/build/coverage" />
+        <mkdir dir="${basedir}/build/logs" />
+        <mkdir dir="${basedir}/build/docs" />
+    </target>
+
+    <target name="lint" description="Runs the php syntax check on entire code base">
+        <apply executable="php" failonerror="true">
+            <arg value="-l" />
+            <fileset dir="${basedir}/module/">
+                <include name="**/*.ph*" />
+            </fileset>
+        </apply>
+    </target>
+
+</project>

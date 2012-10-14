@@ -6,7 +6,7 @@
         <echo>Type "ant -p" to see a list of targets</echo>
     </target>
 
-    <target name="build" depends="clean, prepare" />
+    <target name="build" depends="clean, prepare, phpunit" />
 
     <target name="clean" description="Cleanup build artifacts">
         <delete dir="${basedir}/build/coverage" />
@@ -15,7 +15,7 @@
     </target>
 
     <target name="clean:vendor" description="Cleanup vendor artifacts">
-        <delete file="build-deploy/composer.lock" verbose="true" />
+        <delete file="composer.lock" verbose="true" />
         <delete dir="vendor" />
         <delete dir="bin" />
     </target>
@@ -24,6 +24,13 @@
         <mkdir dir="${basedir}/build/coverage" />
         <mkdir dir="${basedir}/build/logs" />
         <mkdir dir="${basedir}/build/docs" />
+    </target>
+
+    <target name="phpunit" description="Run all application module unit tests with PHPUnit">
+        <exec dir="${basedir}/Application/tests/unit/" executable="${basedir}/bin/phpunit" failonerror="true">
+            <arg value="--testdox-html" />
+            <arg path="${basedir}/build/logs/application/unit/testdox.html" />
+        </exec>
     </target>
 
     <target name="lint" description="Runs the php syntax check on entire code base">

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Battery Data Management</title>
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+        <div class="page-header">
+            <h1>{{report.name}}</h1>
+        </div>
+        <div class="row-fluid">
+
+          <table class="table table-hover">
+            <thead>
+              {% for item in data.headers %}
+                <th>{{ item }}</th>
+              {% endfor %}
+            </thead>
+            <tbody>
+              {% for row in data.rows %}
+                <tr>
+                  {% for cell in row %}
+                  <td>{{ cell }}</td>
+                  {% endfor %}
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          <hr>
+          <a href="/" class="btn"><i class="icon-th"></i> Back to Reports</a>
+        </div>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </body>
+</html>

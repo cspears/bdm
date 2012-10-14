@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Battery Data Management</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Battery Data Management<small> Select a report to begin!</small></h1>
+        </div>
+        <div class="row-fluid">
+            <ul class="thumbnails">
+                {% for report in reports %}
+              <li class="span4">
+                <div class="thumbnail">
+                  <div class="caption">
+                    <h3>{{report.name}}</h3>
+                    <p>{{report.description}}</p>
+                    <p><a href="/report/show/{{report.id}}" class="btn btn-success"><i class="icon-file icon-white"></i> View</a></p>
+                  </div>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

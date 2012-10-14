@@ -1,3 +1,4 @@
+*.bak
 composer.lock
 composer.phar
 vendor/

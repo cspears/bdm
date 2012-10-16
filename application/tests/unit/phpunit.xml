@@ -4,6 +4,7 @@
     <testsuites>
         <testsuite name="Application">
            <directory suffix=".php">./Bdm/Api/</directory>
+           <directory suffix=".php">./Bdm/DataFile/</directory>
         </testsuite>
     </testsuites>
     <!-- FILTERS -->
